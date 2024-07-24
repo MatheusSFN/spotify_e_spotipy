@@ -13,6 +13,12 @@ def drop_tables():
     con.commit()
     con.close()
 
+#Para armazenar dados do tipe BOOLEAN no SQLite, é necessário armazenar como INTEGER (0=False, 1=True) ou TEXT ('TRUE', 'FALSE')
+#Mas é necessário realizar um check na colunas para garantir os valores inseridos
+#EX: CREATE TABLE boolean_test (
+#           bool_int BOOLEAN CHECK(bool_int IN (0, 1)),
+#           bool_text TEXT CHECK(typeof(bool_text) = "text" AND bool_text IN ('TRUE', 'FALSE'))
+#)
 def create_tables():
     con, cur = conn_db()
     cur.execute('''CREATE TABLE IF NOT EXISTS artists (name TEXT, id TEXT primary key, type TEXT, genres TEXT, popularity INTEGER, followers INTEGER)''')

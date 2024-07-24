@@ -34,13 +34,13 @@ def get_top_artists():
     return results_top_artists
 
 def get_artist_albums():
-    results_artist_albuns = sp.artist_albums('spotify:artist:0jOs0wnXCu1bGGP7kh5uIu', album_type=None, include_groups=None, country='BR', limit=100, offset=0)
+    results_artist_albuns = sp.artist_albums('spotify:artist:0jOs0wnXCu1bGGP7kh5uIu', album_type=None, include_groups="album", country='BR', limit=None, offset=0)
     print(json.dumps(results_artist_albuns, sort_keys=True ,indent=4))
     print("\n")
     return results_artist_albuns
 
 def get_album_tracks():
-    results_album_tracks = sp.album_tracks('spotify:album:59W9kTRepoDqDGFgn0kPBa', limit=None, offset=0, market=None)
+    results_album_tracks = sp.album_tracks('spotify:album:59W9kTRepoDqDGFgn0kPBa', limit=None, offset=0, market="BR")
     print(json.dumps(results_album_tracks, sort_keys=True ,indent=4))
     print("\n")
     return results_album_tracks
